@@ -71,7 +71,7 @@ public class Program {
 		return employee;
 	}
 	
-	public static Employee collectInfoOutsourcedEmployee(Scanner sc) {
+	public static OutsourcedEmployee collectInfoOutsourcedEmployee(Scanner sc) {
 		System.out.print("Name: ");
 		sc.nextLine();
 		String name = sc.nextLine();
@@ -85,7 +85,7 @@ public class Program {
 		System.out.print("Additional charge: ");
 		Double additionalCharge = sc.nextDouble();
 		
-		Employee employeeOutsourced = new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge);
+		OutsourcedEmployee employeeOutsourced = new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge);
 		
 		return employeeOutsourced;
 	}
