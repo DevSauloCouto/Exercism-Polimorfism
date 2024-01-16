@@ -25,14 +25,25 @@ public class Program {
 			System.out.println("Employee #"+(i+1)+" data:");
 			
 			System.out.print("Outsourced (y/n)? ");
-			String confirm = sc.next();
+			char confirm = sc.next().charAt(0);
 			
-			if(!yesOrNo(confirm)) {
-				Employee emp = collectInfoEmployee(sc);
-				listEmployee.add(emp);
+			System.out.print("Name: ");
+			sc.nextLine();
+			String name = sc.nextLine();
+			
+			System.out.print("Hours: ");
+			Integer hours = sc.nextInt();
+			
+			System.out.print("Value per hour: ");
+			Double valuePerHour = sc.nextDouble();
+			
+			if(confirm == 'y') {
+				System.out.print("Additional charge: ");
+				Double additionalCharge = sc.nextDouble();
+				
+				listEmployee.add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge));
 			} else {
-				Employee empOutsource = collectInfoOutsourcedEmployee(sc);
-				listEmployee.add(empOutsource);
+				listEmployee.add(new Employee(name, hours, valuePerHour));
 			}
 				
 		}
@@ -45,49 +56,6 @@ public class Program {
 		
 		sc.close();;
 		
-	}
-	
-	public static Boolean yesOrNo(String letter) {
-		if(letter.equals("n")) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-	
-	public static Employee collectInfoEmployee(Scanner sc) {
-		System.out.print("Name: ");
-		sc.nextLine();
-		String name = sc.nextLine();
-		
-		System.out.print("Hours: ");
-		Integer hours = sc.nextInt();
-		
-		System.out.print("Value per hour: ");
-		Double valuePerHour = sc.nextDouble();
-		
-		Employee employee = new Employee(name, hours, valuePerHour);
-		
-		return employee;
-	}
-	
-	public static OutsourcedEmployee collectInfoOutsourcedEmployee(Scanner sc) {
-		System.out.print("Name: ");
-		sc.nextLine();
-		String name = sc.nextLine();
-		
-		System.out.print("Hours: ");
-		Integer hours = sc.nextInt();
-		
-		System.out.print("Value per hour: ");
-		Double valuePerHour = sc.nextDouble();
-		
-		System.out.print("Additional charge: ");
-		Double additionalCharge = sc.nextDouble();
-		
-		OutsourcedEmployee employeeOutsourced = new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge);
-		
-		return employeeOutsourced;
 	}
 
 }
